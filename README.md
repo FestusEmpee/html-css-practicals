@@ -45,6 +45,9 @@
     </head>
     <body class="body">
        <br><br>
+         <!-- 🧮 Score Display -->
+    <p id="score">Wins: 0 | Losses: 0 | Ties: 0</p>
+
        <button class="Rock" onclick="
        const randomNumber=Math.random();
         let ComputerMove=''
@@ -58,6 +61,12 @@
         else if (ComputerMove === 'Scissors') {result = 'You win!';}
 
         alert(`You picked Rock. Computer chose ${ComputerMove}. ${result}`)
+
+              if (result === 'You win!') wins++;
+            else if (result === 'You lose') losses++;
+           else ties++;
+           updateScore();
+
         ">Rock</button>
 
        <button class="Paper" onclick="
@@ -73,6 +82,11 @@
        else if (ComputerMove === 'Scissors') { result = 'You lose';}
 
        alert(`You picked paper.Computer picked ${ComputerMove}.${result}`);
+
+       if (result === 'You win') wins++;
+      else if (result === 'You lose') losses++;
+      else ties++;
+      updateScore();
        ">Paper</button>
 
        <button class="Scissors" onclick="
@@ -88,8 +102,22 @@
        else if (ComputerMove === 'Rock'){result = 'You lose';}
 
        alert(`You picked Scissors.Computer picked ${ComputerMove}.${result}`);
+
+       if (result === 'You win') wins++;
+      else if (result === 'You lose') losses++;
+      else ties++;
+      updateScore();
      ">Scissors</button> 
-  
-     
+
+      <!-- 🧠 Score Logic -->
+    <script>
+      let wins = 0;
+      let losses = 0;
+      let ties = 0;
+
+      function updateScore() {
+        document.getElementById('score').innerText = `Wins: ${wins} | Losses: ${losses} | Ties: ${ties}`;
+      }
+    </script>
     </body>
 </html>
